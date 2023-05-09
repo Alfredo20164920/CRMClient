@@ -25,9 +25,6 @@ const Register = () => {
         }
     });
 
-
-
-
     return (
         <Layout>
             <h1 className="text-2xl text-white text-center font-light">Register</h1>
