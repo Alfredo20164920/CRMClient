@@ -1,6 +1,7 @@
 import React from "react";
 import Head from 'next/head'
 import Sidebar from "./Sidebar";
+import Header from "./Header";
 import { Router, useRouter } from "next/router";
 
 const Layout = ({children}) => {
@@ -28,6 +29,7 @@ const Layout = ({children}) => {
                             <div className="flex min-h-screen">
                                 <Sidebar />
                                 <main className='bg-gray-200 p-5 sm:w-2/3 sm:min-h-screen xl:w-5/6'>
+                                    <Header></Header>
                                     {children}
                                 </main>
                             </div>
