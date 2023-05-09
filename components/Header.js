@@ -16,11 +16,14 @@ const Header = () => {
 
     const router = useRouter();
 
-    const {data, loading, error} = useQuery(GET_USER);
+    const {data, loading, client} = useQuery(GET_USER);
 
     if(loading) return "Loading..."
 
-    
+    if(!data) {
+        client.clearStore();
+        router.push('/login');
+    }
 
     const { name, lastName } = data.getUser;
 
