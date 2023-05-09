@@ -5,7 +5,6 @@ import React from 'react'
 const Sidebar = () => {
 
     const router = useRouter();
-    console.log(router.pathname);
 
     return (
         <aside className='bg-gray-800 p-5 sm:w-1/3 sm:min-h-screen xl:w-1/6'>
