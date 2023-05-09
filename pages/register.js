@@ -76,8 +76,8 @@ const Register = () => {
 
     const showMessage = () => {
         return (
-            <div className='bg-green-500 py-2 px-3 w-full my-3 max-w-sm text-center mx-auto rounded'>
-                <p className='text-white'>{message}</p>
+            <div className='bg-white py-2 px-3 w-full my-3 max-w-sm text-center mx-auto rounded'>
+                <p className='text-gray-800'>{message}</p>
             </div>
         )
     }
