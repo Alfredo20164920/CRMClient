@@ -78,7 +78,7 @@ const EditClient = () => {
             })
 
             // Show sweet alert
-            Swal.fire("Updated!", data.updateClient, "success");
+            Swal.fire("Updated!", `Product ${data.updateClient.name} updated successfully`, "success");
 
             // Redirect   
             router.push('/');
