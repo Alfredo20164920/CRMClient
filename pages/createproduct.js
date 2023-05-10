@@ -191,7 +191,7 @@ const CreateProduct = () => {
 						<input
 							type="submit"
 							className="bg-gray-800 w-full mt-5 p-2 capitalize text-white font-bold hover:bg-gray-600"
-							value="Register client"
+							value="Create product"
 						/>
 					</form>
 				</div>
