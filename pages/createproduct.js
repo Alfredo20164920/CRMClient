@@ -81,7 +81,7 @@ const CreateProduct = () => {
                 // console.log(data)
 
                 // Alert
-                Swal.fire("Saved!", `Product ${data.name} created successfully`, "success");
+                Swal.fire("Saved!", `Product ${data.createProduct.name} created successfully`, "success");
                 // Redirect
                 router.push('/products');
             } catch (error) {

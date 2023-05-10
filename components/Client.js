@@ -16,7 +16,6 @@ const GET_CLIENTS_BY_USER = gql`
 			name
 			lastName
 			company
-			seller
 			email
 		}
 	}

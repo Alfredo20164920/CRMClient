@@ -64,7 +64,7 @@ const Product = ({product}) => {
                     })
 
                     //show alert
-                    Swal.fire("Deleted!", data.deleteClient, "success");
+                    Swal.fire("Deleted!", data.deleteProduct, "success");
                 } catch (error) {
                     console.log(error);
                 }

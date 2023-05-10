@@ -25,7 +25,6 @@ const GET_CLIENTS_BY_USER = gql`
 			name
 			lastName
 			company
-			seller
 			email
 		}
 	}
@@ -66,8 +65,6 @@ const CreateClient = () => {
             email: Yup.string().email('Invalid email').required('Email is required'),
         }),
         onSubmit: async (values) => {
-            console.log(values);
-
             const { name, lastName, company, email, phone } = values;
 
             try {
