@@ -1,7 +1,78 @@
 import React from 'react'
+import Swal from 'sweetalert2';
+import { gql, useMutation } from '@apollo/client';
+
+const DELETE_PRODUCT = gql`
+    mutation DeleteProduct($id: ID!) {
+        deleteProduct(id: $id)
+    }
+`;
+
+const GET_PRODUCTS = gql`
+    query GetProducts {
+        getProducts {
+            id
+            name
+            price
+            stock
+            created
+        }
+    }
+`;
 
 const Product = ({product}) => {
+
     const {id, name, price, stock} = product;
+
+
+    // Mutatation delete
+    const [ deleteProduct ] = useMutation(DELETE_PRODUCT, {
+        update(cache){
+            const { getProducts } = cache.readQuery({ query: GET_PRODUCTS });
+
+            cache.writeQuery({
+                query: GET_PRODUCTS,
+                data: {
+                    getProducts: getProducts.filter(p => p.id !== id)
+                }
+            })
+        }
+    });
+
+
+
+    const onDeleteProduct = () => {
+        Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!",
+		}).then( async (result) => {
+			if (result.isConfirmed) {
+
+                try {
+
+                    // delete by id
+                    const { data } = await deleteProduct({
+                        variables: {
+                            id
+                        }
+                    })
+
+                    //show alert
+                    Swal.fire("Deleted!", data.deleteClient, "success");
+                } catch (error) {
+                    console.log(error);
+                }
+
+			}
+		});
+    }
+
+
     return (
         <tr className="text-gray-800">
 			<td className="border px-4 py-2">
@@ -35,6 +106,7 @@ const Product = ({product}) => {
 				<button
 					type="button"
 					className="flex justify-center items-center bg-red-600 py-2 px-4 w-full text-white rounded text-md uppercase font-bold gap-3"
+                    onClick={() => onDeleteProduct()}
 				>
 					Delete
 					<svg
